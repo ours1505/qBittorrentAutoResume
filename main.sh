@@ -5,10 +5,10 @@ apt install -y python3-pip
 pip3 install qbittorrent-api
 
 # 创建目录并检查是否成功
-mkdir /opt/HDSkyAutoResume || { echo "创建目录失败，请检查权限或磁盘空间"; exit 1; }
+mkdir /opt/HDSkyAutoResume
 
 # 安全地下载文件，并检查下载是否成功
-wget -qO- https://raw.githubusercontent.com/ours1505/HDSkyResume/master/main.py > /opt/HDSkyAutoResume/main.py || { echo "下载文件失败，请检查网络连接"; exit 1; }
+wget -qO- https://raw.githubusercontent.com/ours1505/HDSkyResume/master/main.py > /opt/HDSkyAutoResume/main.py
 
 # 读取用户输入并进行基础验证
 echo 请输入您的qbittorrent的IP地址：（如果qbittorrent运行在docker中，127.0.0.1将无法连接到qb！请使用dockerIP或者直接使用主机公网IP）
