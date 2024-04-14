@@ -8,7 +8,7 @@ _可恶的HDSKY，盒子刷流居然前1小时不给计入流量！！太坏了�
 ## 话不多说，开始吧
 这里是一个配合RSS使用的脚本，在RSS任务中需要勾选`添加种子时暂停`选项。  
 ``` shell
-bash <(wget -qO- https://raw.githubusercontent.com/ours1505/HDSkyAutoResume/main/main.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/ours1505/HDSkyResume/master/main.sh)
 ```
 按照提示输入相关信息即可 程序会自动运行，每60秒检测一次  
 后续日志查看：

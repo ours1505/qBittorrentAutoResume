@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# 安装依赖
+apt install -y python3-pip
+pip3 install qbittorrent-api
+
 # 创建目录并检查是否成功
 mkdir /opt/HDSkyAutoResume || { echo "创建目录失败，请检查权限或磁盘空间"; exit 1; }
 
@@ -23,7 +27,6 @@ echo 请输入您想要多长时间后启动种子（单位为秒）：（因为
 read resume_time
 [[ $resume_time =~ ^[1-9][0-9]*$ ]] || { echo "无效的时间间隔"; exit 1; }
 
-# 以更安全的方式创建配置文件
 cat <<EOF > /opt/HDSkyAutoResume/config.ini
 [qbittorrent]
 ip = $qbittorrent_ip
