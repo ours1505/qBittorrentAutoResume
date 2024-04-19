@@ -17,6 +17,9 @@ echo 请输入您的qbittorrent的端口：（默认为8080）
 read qbittorrent_port
 [[ $qbittorrent_port =~ ^[1-9][0-9]{0,4}$ ]] || { echo "无效的端口号"; exit 1; }
 
+echo 请输入您的qbittorrent的用户名：（默认为admin）
+read qbittorrent_username
+
 echo 请输入您的qbittorrent的密码：
 read -s qbittorrent_password
 echo
@@ -29,6 +32,7 @@ cat <<EOF > /opt/qBittorrentAutoResume/config.ini
 [qbittorrent]
 ip = $qbittorrent_ip
 port = $qbittorrent_port
+username = $qbittorrent_username
 password = $qbittorrent_password
 resume_time = $resume_time
 EOF
