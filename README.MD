@@ -23,6 +23,10 @@ systemctl start HDSkyAutoResume.service
 ```shell
 systemctl stop HDSkyAutoResume.service
 ```
+重载
+```
+systemctl restart HDSkyAutoResume.service
+```
 ## 配置文件
 ```shell
 vim /opt/HDSkyAutoResume/config.ini

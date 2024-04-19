@@ -4,11 +4,9 @@
 apt install -y python3-pip
 pip3 install qbittorrent-api
 
-# 创建目录并检查是否成功
-mkdir /opt/HDSkyAutoResume
+mkdir /opt/qBittorrentAutoResume
 
-# 安全地下载文件，并检查下载是否成功
-wget -qO- https://raw.githubusercontent.com/ours1505/HDSkyResume/master/main.py > /opt/HDSkyAutoResume/main.py
+wget -qO- https://raw.githubusercontent.com/ours1505/qBittorrentAutoResume/master/main.py > /opt/qBittorrentAutoResume/main.py
 
 # 读取用户输入并进行基础验证
 echo 请输入您的qbittorrent的IP地址：（如果qbittorrent运行在docker中，127.0.0.1将无法连接到qb！请使用dockerIP或者直接使用主机公网IP）
@@ -27,7 +25,7 @@ echo 请输入您想要多长时间后启动种子（单位为秒）：（因为
 read resume_time
 [[ $resume_time =~ ^[1-9][0-9]*$ ]] || { echo "无效的时间间隔"; exit 1; }
 
-cat <<EOF > /opt/HDSkyAutoResume/config.ini
+cat <<EOF > /opt/qBittorrentAutoResume/config.ini
 [qbittorrent]
 ip = $qbittorrent_ip
 port = $qbittorrent_port
@@ -36,18 +34,18 @@ resume_time = $resume_time
 EOF
 
 # 检查配置文件写入是否成功
-[[ -f /opt/HDSkyAutoResume/config.ini ]] || { echo "写入配置文件失败"; exit 1; }
+[[ -f /opt/qBittorrentAutoResume/config.ini ]] || { echo "写入配置文件失败"; exit 1; }
 
 # 创建系统服务配置文件，并检查是否成功
-cat <<EOF > /etc/systemd/system/HDSkyAutoResume.service
+cat <<EOF > /etc/systemd/system/qBittorrentAutoResume.service
 [Unit]
-Description=HDSkyAutoResume
+Description=qBittorrentAutoResume
 After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/HDSkyAutoResume
-ExecStart=/usr/bin/python3 /opt/HDSkyAutoResume/main.py
+WorkingDirectory=/opt/qBittorrentAutoResume
+ExecStart=/usr/bin/python3 /opt/qBittorrentAutoResume/main.py
 Restart=always
 User=root
 
@@ -56,10 +54,10 @@ WantedBy=multi-user.target
 EOF
 
 # 检查服务单元文件写入是否成功
-[[ -f /etc/systemd/system/HDSkyAutoResume.service ]] || { echo "写入服务单元文件失败"; exit 1; }
-chmod +x /etc/systemd/system/HDSkyAutoResume.service
+[[ -f /etc/systemd/system/qBittorrentAutoResume.service ]] || { echo "写入服务单元文件失败"; exit 1; }
+chmod +x /etc/systemd/system/qBittorrentAutoResume.service
 # 通知系统重新加载配置，并启动服务
 systemctl daemon-reload
-systemctl enable --now HDSkyAutoResume.service
+systemctl enable --now qBittorrentAutoResume.service
 echo "服务已启动，请检查是否正常运行。"
-systemctl status HDSkyAutoResume.service
+systemctl status qBittorrentAutoResume.service
