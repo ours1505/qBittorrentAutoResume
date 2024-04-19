@@ -21,7 +21,7 @@ echo 请输入您的qbittorrent的用户名：（默认为admin）
 read qbittorrent_username
 
 echo 请输入您的qbittorrent的密码：
-read -s qbittorrent_password
+read qbittorrent_password
 echo
 
 echo 请输入您想要多长时间后启动种子（单位为秒）：（因为汇报有延迟，所以建议提前十分钟，即输入3000）
