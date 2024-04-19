@@ -32,4 +32,6 @@ systemctl restart qBittorrentAutoResume.service
 vim /opt/qBittorrentAutoResume/config.ini
 ```
 ## 注意
-如果qbittorrent运行在docker中，127.0.0.1将无法连接到qb！请使用dockerIP或者直接使用主机公网IP
+如果qbittorrent运行在docker中，127.0.0.1将无法连接到qb！请使用dockerIP或者直接使用主机公网IP  
+设置图片
+![1713535735686.png](https://img2.imgtp.com/2024/04/19/pykysAIG.png)
