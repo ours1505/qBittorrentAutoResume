@@ -2,7 +2,7 @@
 
 # 安装依赖
 apt install -y python3-pip
-pip3 install qbittorrent-api
+pip3 install qbittorrent-api --break-system-packages
 
 mkdir /opt/qBittorrentAutoResume
 
