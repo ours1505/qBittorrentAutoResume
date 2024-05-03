@@ -30,7 +30,7 @@ read resume_time
 
 cat <<EOF > /opt/qBittorrentAutoResume/config.ini
 [qbittorrent]
-ip = $qbittorrent_ip
+host = $qbittorrent_ip
 port = $qbittorrent_port
 username = $qbittorrent_username
 password = $qbittorrent_password
