@@ -34,7 +34,7 @@ host = $qbittorrent_ip
 port = $qbittorrent_port
 username = $qbittorrent_username
 password = $qbittorrent_password
-resume_time = $resume_time
+ResumeTime = $resume_time
 EOF
 
 # 检查配置文件写入是否成功
